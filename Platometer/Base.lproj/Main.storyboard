@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Platometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fhi-z7-EET">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeM-qs-Wbo">
+                                <rect key="frame" x="152.5" y="602" width="70" height="45"/>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.19215686269999999" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="WzS-fI-KDJ"/>
+                                    <constraint firstAttribute="height" constant="45" id="xBB-4E-8NN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="START">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startSessionButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gg5-mK-T7F"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zui-Rh-0gS">
+                                <rect key="frame" x="230" y="647" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fhi-z7-EET" secondAttribute="bottom" id="9ke-rV-TxI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HeM-qs-Wbo" secondAttribute="bottom" constant="20" id="NRo-pH-pwo"/>
+                            <constraint firstAttribute="trailing" secondItem="fhi-z7-EET" secondAttribute="trailing" id="PM8-NO-i2o"/>
+                            <constraint firstItem="zui-Rh-0gS" firstAttribute="bottom" secondItem="HeM-qs-Wbo" secondAttribute="bottom" id="eNd-vC-PCB"/>
+                            <constraint firstItem="fhi-z7-EET" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hEu-A6-Y2a"/>
+                            <constraint firstItem="fhi-z7-EET" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="n6i-FU-Z4u"/>
+                            <constraint firstItem="zui-Rh-0gS" firstAttribute="leading" secondItem="HeM-qs-Wbo" secondAttribute="trailing" constant="8" id="rfC-GA-0O2"/>
+                            <constraint firstItem="HeM-qs-Wbo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sp4-BL-eIN"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zui-Rh-0gS" secondAttribute="trailing" constant="16" id="taI-wd-gBa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="areaLabel" destination="zui-Rh-0gS" id="oO2-iU-ekQ"/>
+                        <outlet property="mapView" destination="fhi-z7-EET" id="T00-Kd-VsV"/>
+                        <outlet property="startSessionButton" destination="HeM-qs-Wbo" id="B5j-8y-EZ5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+</document>

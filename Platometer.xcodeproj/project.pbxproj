@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9853AC121F1DFC5A005DC207 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853AC111F1DFC5A005DC207 /* AppDelegate.swift */; };
+		9853AC141F1DFC5A005DC207 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853AC131F1DFC5A005DC207 /* ViewController.swift */; };
+		9853AC171F1DFC5A005DC207 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9853AC151F1DFC5A005DC207 /* Main.storyboard */; };
+		9853AC191F1DFC5A005DC207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9853AC181F1DFC5A005DC207 /* Assets.xcassets */; };
+		9853AC1C1F1DFC5A005DC207 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9853AC1A1F1DFC5A005DC207 /* LaunchScreen.storyboard */; };
+		98943AE31F1E354500506686 /* MapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98943AE21F1E354500506686 /* MapPoint.swift */; };
+		98A293AA1F2328460004DCB9 /* MakePolygonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A293A91F2328460004DCB9 /* MakePolygonModel.swift */; };
+		9C39D9ED2FBF91588ACCC9C0 /* Pods_Platometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3ED24D469C79FC26B0BDDA5 /* Pods_Platometer.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9853AC0E1F1DFC5A005DC207 /* Platometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Platometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9853AC111F1DFC5A005DC207 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9853AC131F1DFC5A005DC207 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9853AC161F1DFC5A005DC207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9853AC181F1DFC5A005DC207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9853AC1B1F1DFC5A005DC207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9853AC1D1F1DFC5A005DC207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98943AE21F1E354500506686 /* MapPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPoint.swift; sourceTree = "<group>"; };
+		98A293A91F2328460004DCB9 /* MakePolygonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakePolygonModel.swift; sourceTree = "<group>"; };
+		ABA8271D0391A57CC2C2B2DD /* Pods-Platometer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Platometer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Platometer/Pods-Platometer.debug.xcconfig"; sourceTree = "<group>"; };
+		C3ED24D469C79FC26B0BDDA5 /* Pods_Platometer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Platometer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5B17B78A5774443419F0A51 /* Pods-Platometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Platometer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Platometer/Pods-Platometer.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9853AC0B1F1DFC5A005DC207 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C39D9ED2FBF91588ACCC9C0 /* Pods_Platometer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		523771B3EB81A1DE79C4B48B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ABA8271D0391A57CC2C2B2DD /* Pods-Platometer.debug.xcconfig */,
+				D5B17B78A5774443419F0A51 /* Pods-Platometer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9853AC051F1DFC59005DC207 = {
+			isa = PBXGroup;
+			children = (
+				9853AC101F1DFC5A005DC207 /* Platometer */,
+				9853AC0F1F1DFC5A005DC207 /* Products */,
+				523771B3EB81A1DE79C4B48B /* Pods */,
+				E8650A48076929831DA14AF2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9853AC0F1F1DFC5A005DC207 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9853AC0E1F1DFC5A005DC207 /* Platometer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9853AC101F1DFC5A005DC207 /* Platometer */ = {
+			isa = PBXGroup;
+			children = (
+				9853AC111F1DFC5A005DC207 /* AppDelegate.swift */,
+				9853AC131F1DFC5A005DC207 /* ViewController.swift */,
+				98A293A91F2328460004DCB9 /* MakePolygonModel.swift */,
+				98943AE21F1E354500506686 /* MapPoint.swift */,
+				9853AC151F1DFC5A005DC207 /* Main.storyboard */,
+				9853AC181F1DFC5A005DC207 /* Assets.xcassets */,
+				9853AC1A1F1DFC5A005DC207 /* LaunchScreen.storyboard */,
+				9853AC1D1F1DFC5A005DC207 /* Info.plist */,
+			);
+			path = Platometer;
+			sourceTree = "<group>";
+		};
+		E8650A48076929831DA14AF2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3ED24D469C79FC26B0BDDA5 /* Pods_Platometer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9853AC0D1F1DFC5A005DC207 /* Platometer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9853AC201F1DFC5A005DC207 /* Build configuration list for PBXNativeTarget "Platometer" */;
+			buildPhases = (
+				87E8F78116F1A70B00D3B2DF /* [CP] Check Pods Manifest.lock */,
+				9853AC0A1F1DFC5A005DC207 /* Sources */,
+				9853AC0B1F1DFC5A005DC207 /* Frameworks */,
+				9853AC0C1F1DFC5A005DC207 /* Resources */,
+				29FCBBDEC927AC31CB89BE9D /* [CP] Embed Pods Frameworks */,
+				9271C6FC46B79F5B6FE1C497 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Platometer;
+			productName = Platometer;
+			productReference = 9853AC0E1F1DFC5A005DC207 /* Platometer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9853AC061F1DFC5A005DC207 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Hummingwave Technologies";
+				TargetAttributes = {
+					9853AC0D1F1DFC5A005DC207 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 374A5BSW36;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9853AC091F1DFC5A005DC207 /* Build configuration list for PBXProject "Platometer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9853AC051F1DFC59005DC207;
+			productRefGroup = 9853AC0F1F1DFC5A005DC207 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9853AC0D1F1DFC5A005DC207 /* Platometer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9853AC0C1F1DFC5A005DC207 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9853AC1C1F1DFC5A005DC207 /* LaunchScreen.storyboard in Resources */,
+				9853AC191F1DFC5A005DC207 /* Assets.xcassets in Resources */,
+				9853AC171F1DFC5A005DC207 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		29FCBBDEC927AC31CB89BE9D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Platometer/Pods-Platometer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87E8F78116F1A70B00D3B2DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9271C6FC46B79F5B6FE1C497 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Platometer/Pods-Platometer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9853AC0A1F1DFC5A005DC207 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98A293AA1F2328460004DCB9 /* MakePolygonModel.swift in Sources */,
+				9853AC141F1DFC5A005DC207 /* ViewController.swift in Sources */,
+				9853AC121F1DFC5A005DC207 /* AppDelegate.swift in Sources */,
+				98943AE31F1E354500506686 /* MapPoint.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9853AC151F1DFC5A005DC207 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9853AC161F1DFC5A005DC207 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9853AC1A1F1DFC5A005DC207 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9853AC1B1F1DFC5A005DC207 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9853AC1E1F1DFC5A005DC207 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9853AC1F1F1DFC5A005DC207 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9853AC211F1DFC5A005DC207 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABA8271D0391A57CC2C2B2DD /* Pods-Platometer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 374A5BSW36;
+				INFOPLIST_FILE = Platometer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DeblinaOwned.Platometer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		9853AC221F1DFC5A005DC207 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5B17B78A5774443419F0A51 /* Pods-Platometer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 374A5BSW36;
+				INFOPLIST_FILE = Platometer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DeblinaOwned.Platometer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9853AC091F1DFC5A005DC207 /* Build configuration list for PBXProject "Platometer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9853AC1E1F1DFC5A005DC207 /* Debug */,
+				9853AC1F1F1DFC5A005DC207 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9853AC201F1DFC5A005DC207 /* Build configuration list for PBXNativeTarget "Platometer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9853AC211F1DFC5A005DC207 /* Debug */,
+				9853AC221F1DFC5A005DC207 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9853AC061F1DFC5A005DC207 /* Project object */;
+}
