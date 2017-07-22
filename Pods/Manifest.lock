@@ -1,16 +1,3 @@
-PODS:
-  - GoogleMaps (2.3.1):
-    - GoogleMaps/Maps (= 2.3.1)
-  - GoogleMaps/Base (2.3.1)
-  - GoogleMaps/Maps (2.3.1):
-    - GoogleMaps/Base
-
-DEPENDENCIES:
-  - GoogleMaps
-
-SPEC CHECKSUMS:
-  GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
-
-PODFILE CHECKSUM: 9e3fbec886df469270ce3b0625f071bee72bea48
+PODFILE CHECKSUM: e4ac3510f7bb681def9edba9b98dd0a2f0d91d01
 
 COCOAPODS: 1.2.0.beta.3

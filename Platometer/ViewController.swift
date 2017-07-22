@@ -9,7 +9,6 @@
 import UIKit
 import CoreLocation
 import MapKit
-import GoogleMaps
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
