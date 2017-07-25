@@ -3,7 +3,7 @@
 //  Platometer
 //
 //  Created by Deblina Das on 18/07/17.
-//  Copyright © 2017 DeblinaOwned. All rights reserved.
+//  Copyright © 2017 Hummingwave Technologies. All rights reserved.
 //
 
 import UIKit
@@ -19,7 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
     // Array of annotations - modified when the points are changed.
-    var annotations = [MapPoint]()
+   // var annotations = [MapPoint]()
     // Current polygon displayed in the overlay.
     var polygon: MKPolygon?
     private(set) var makePolygon = MakePolygonModel()
@@ -30,27 +30,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         mapView.delegate = self
         
         locationManager.delegate = self
-        locationManager.desiredAccuracy = 1 // 1 meter
-        locationManager.distanceFilter = 1
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.requestWhenInUseAuthorization()
     }
 
     var locationCordinates = [CLLocationCoordinate2D]()
     
     func addPolyLine() {
-        mapView.overlays.forEach {
-            mapView.removeOverlays([$0])
-        }
-        //Close path polyline
-        var localAnnotations = annotations.map{$0}
-        localAnnotations.append(annotations.first!)
-        mapView.add(MKPolyline(coordinates: localAnnotations.map{$0.coordinate}, count: annotations.map{$0.coordinate}.count + 1))
+        guard mapView.annotations.count > 0 else { return }
+        mapView.removeOverlays(mapView.overlays)
+        // Close path polyline
+        var coordinates = mapView.annotations.map { $0.coordinate }
+        coordinates.append(mapView.annotations.first!.coordinate)
+        mapView.add(MKPolyline(coordinates: coordinates, count: coordinates.count))
     }
     
-    func addAnnotation(to location: CLLocation) {
-        let annotation = MapPoint(coordinate: location.coordinate)
-        mapView.addAnnotation(annotation)
-        annotations.append(annotation)
+    func addLocations(_ locations: [CLLocation]) {
+        let annotations = locations.map { MapPoint(coordinate: $0.coordinate) }
+        mapView.addAnnotations(annotations)
     }
 
     private var isStarted:Bool = false
@@ -69,15 +66,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateOverlay() {
-        
         // Remove existing overlay.
         if let polygon = self.polygon { mapView.remove(polygon) }
         self.polygon = nil
-        if annotations.count < 3 { print("Not enough coordinates")
+        if mapView.annotations.count < 3 { print("Not enough coordinates")
             return
         }
         // Create coordinates for new overlay.
-        let coordinates = annotations.map({ $0.coordinate })
+        let coordinates = mapView.annotations.map({ $0.coordinate })
         // Sort the coordinates to create a path surrounding the points.
         // Remove this if you only want to draw lines between the points.
         var hull = makePolygon.sortConvex(input: coordinates)
@@ -92,9 +88,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 extension ViewController: MKMapViewDelegate, UIGestureRecognizerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        locations.forEach {self.locationCordinates.append($0.coordinate)}
-        addAnnotation(to: location)
+        addLocations(locations)
         updateOverlay()
         addPolyLine()
     }
@@ -115,10 +109,10 @@ extension ViewController: MKMapViewDelegate, UIGestureRecognizerDelegate {
         annotationView.image = UIImage(named: "annotation")
         annotationView.isDraggable = true
         
-        let longPress = UILongPressGestureRecognizer.init(target: self, action: #selector(deleteAnnotationOnLongPress(gesture:annotationView:)))
-        longPress.minimumPressDuration = 0.3
-        longPress.delegate = self
-        annotationView.addGestureRecognizer(longPress)
+//        let longPress = UILongPressGestureRecognizer.init(target: self, action: #selector(deleteAnnotationOnLongPress(gesture:annotationView:)))
+//        longPress.minimumPressDuration = 0.3
+//        longPress.delegate = self
+//        annotationView.addGestureRecognizer(longPress)
         return annotationView
     }
     
@@ -132,15 +126,15 @@ extension ViewController: MKMapViewDelegate, UIGestureRecognizerDelegate {
         }
     }
     
-    func deleteAnnotationOnLongPress(gesture: UIGestureRecognizer, annotationView: MKAnnotationView) {
-        for annotation in mapView.annotations {
-            if let annotation = annotation as? MapPoint, annotationView.annotation as? MapPoint == annotation {
-                self.annotations = self.annotations.filter{$0 != annotationView.annotation as? MapPoint}
-                self.mapView.removeAnnotation(annotation)
-            }
-            updateOverlay()
-            addPolyLine()
-        }
-    }
+//    func deleteAnnotationOnLongPress(gesture: UIGestureRecognizer, annotationView: MKAnnotationView) {
+//        for annotation in mapView.annotations {
+//            if let annotation = annotation as? MapPoint, annotationView.annotation as? MapPoint == annotation {
+//                self.annotations = self.annotations.filter{$0 != annotationView.annotation as? MapPoint}
+//                self.mapView.removeAnnotation(annotation)
+//            }
+//            updateOverlay()
+//            addPolyLine()
+//        }
+//    }
 }
 

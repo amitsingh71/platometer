@@ -14,7 +14,6 @@
 		9853AC1C1F1DFC5A005DC207 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9853AC1A1F1DFC5A005DC207 /* LaunchScreen.storyboard */; };
 		98943AE31F1E354500506686 /* MapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98943AE21F1E354500506686 /* MapPoint.swift */; };
 		98A293AA1F2328460004DCB9 /* MakePolygonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A293A91F2328460004DCB9 /* MakePolygonModel.swift */; };
-		9C39D9ED2FBF91588ACCC9C0 /* Pods_Platometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3ED24D469C79FC26B0BDDA5 /* Pods_Platometer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +26,6 @@
 		9853AC1D1F1DFC5A005DC207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98943AE21F1E354500506686 /* MapPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPoint.swift; sourceTree = "<group>"; };
 		98A293A91F2328460004DCB9 /* MakePolygonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakePolygonModel.swift; sourceTree = "<group>"; };
-		ABA8271D0391A57CC2C2B2DD /* Pods-Platometer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Platometer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Platometer/Pods-Platometer.debug.xcconfig"; sourceTree = "<group>"; };
-		C3ED24D469C79FC26B0BDDA5 /* Pods_Platometer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Platometer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5B17B78A5774443419F0A51 /* Pods-Platometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Platometer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Platometer/Pods-Platometer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,29 +33,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C39D9ED2FBF91588ACCC9C0 /* Pods_Platometer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		523771B3EB81A1DE79C4B48B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				ABA8271D0391A57CC2C2B2DD /* Pods-Platometer.debug.xcconfig */,
-				D5B17B78A5774443419F0A51 /* Pods-Platometer.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		9853AC051F1DFC59005DC207 = {
 			isa = PBXGroup;
 			children = (
 				9853AC101F1DFC5A005DC207 /* Platometer */,
 				9853AC0F1F1DFC5A005DC207 /* Products */,
-				523771B3EB81A1DE79C4B48B /* Pods */,
-				E8650A48076929831DA14AF2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,14 +70,6 @@
 			path = Platometer;
 			sourceTree = "<group>";
 		};
-		E8650A48076929831DA14AF2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C3ED24D469C79FC26B0BDDA5 /* Pods_Platometer.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,12 +77,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9853AC201F1DFC5A005DC207 /* Build configuration list for PBXNativeTarget "Platometer" */;
 			buildPhases = (
-				87E8F78116F1A70B00D3B2DF /* [CP] Check Pods Manifest.lock */,
 				9853AC0A1F1DFC5A005DC207 /* Sources */,
 				9853AC0B1F1DFC5A005DC207 /* Frameworks */,
 				9853AC0C1F1DFC5A005DC207 /* Resources */,
-				29FCBBDEC927AC31CB89BE9D /* [CP] Embed Pods Frameworks */,
-				9271C6FC46B79F5B6FE1C497 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,7 +102,7 @@
 				TargetAttributes = {
 					9853AC0D1F1DFC5A005DC207 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 374A5BSW36;
+						DevelopmentTeam = SW9HYGMUFG;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -164,54 +137,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		29FCBBDEC927AC31CB89BE9D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Platometer/Pods-Platometer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		87E8F78116F1A70B00D3B2DF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9271C6FC46B79F5B6FE1C497 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Platometer/Pods-Platometer-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9853AC0A1F1DFC5A005DC207 /* Sources */ = {
@@ -342,14 +267,13 @@
 		};
 		9853AC211F1DFC5A005DC207 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABA8271D0391A57CC2C2B2DD /* Pods-Platometer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 374A5BSW36;
+				DEVELOPMENT_TEAM = SW9HYGMUFG;
 				INFOPLIST_FILE = Platometer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.DeblinaOwned.Platometer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hummingwave.Platometer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -357,14 +281,13 @@
 		};
 		9853AC221F1DFC5A005DC207 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5B17B78A5774443419F0A51 /* Pods-Platometer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 374A5BSW36;
+				DEVELOPMENT_TEAM = SW9HYGMUFG;
 				INFOPLIST_FILE = Platometer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.DeblinaOwned.Platometer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hummingwave.Platometer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

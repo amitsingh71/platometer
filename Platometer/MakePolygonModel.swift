@@ -3,7 +3,7 @@
 //  Platometer
 //
 //  Created by Deblina Das on 22/07/17.
-//  Copyright © 2017 DeblinaOwned. All rights reserved.
+//  Copyright © 2017 Hummingwave Technologies. All rights reserved.
 //
 
 import Foundation
