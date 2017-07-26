@@ -40,31 +40,12 @@ class ViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-
-    var locationCordinates = [CLLocationCoordinate2D]()
     
     @IBAction func startStopButtonTapped(_ sender: UIButton) {
         viewModel.isSessionInProgress = !viewModel.isSessionInProgress
         startStopButton.setTitle(viewModel.startStopButtonTitle, for: .normal)
     }
-    
-//    func updateOverlay() {
-//        // Remove existing overlay.
-//        if let polygon = self.polygon { mapView.remove(polygon) }
-//        self.polygon = nil
-//        if mapView.annotations.count < 3 { return }
-//        // Create coordinates for new overlay.
-//        let coordinates = mapView.annotations.map({ $0.coordinate })
-//        // Sort the coordinates to create a path surrounding the points.
-//        // Remove this if you only want to draw lines between the points.
-//        var hull = makePolygon.sortConvex(input: coordinates)
-//        let polygon = MKPolygon(coordinates: &hull, count: hull.count)
-//        areaInSqM.text = "\(polygon.boundingMapRect.size.width * polygon.boundingMapRect.size.height) sq."
-//        //print(polygon.boundingMapRect)
-//        mapView.add(polygon)
-//        self.polygon = polygon
-//    }
-    
+
 }
 
 // MARK: Location Manager Delegate
@@ -74,7 +55,6 @@ extension ViewController: CLLocationManagerDelegate {
         updateAccuracy(from: locations.last!)
         zoomInFirstTime(to: locations.last!)
         let usefulLocations = updateLocations(locations)
-        //updateOverlay()
         updatePolyline(from: usefulLocations)
     }
     
@@ -93,7 +73,7 @@ extension ViewController: CLLocationManagerDelegate {
     
     private func updateLocations(_ locations: [CLLocation]) -> [CLLocation]? {
         if !viewModel.isSessionInProgress { return nil }                        // Record points only if a session is on.
-        let aLocations = locations.filter { $0.horizontalAccuracy <= 200 }      // Ignore points that are not accurate
+        let aLocations = locations.filter { $0.horizontalAccuracy <= 100 }      // Ignore points that are not accurate.
         let annotations = aLocations.map { MapPoint(coordinate: $0.coordinate) }
         mapView.addAnnotations(annotations)
         return aLocations
@@ -111,10 +91,9 @@ extension ViewController: CLLocationManagerDelegate {
         lastRenderedCoordinate = newCoordinates.last
 
         if let firstPoint = mapView.annotations.first?.coordinate {
-            let aClosingLine = MKPolyline(coordinates: [locations.last!.coordinate, firstPoint], count: 2)
             if let closingLine = self.closingLine { mapView.remove(closingLine) }
-            mapView.add(aClosingLine)
-            self.closingLine = aClosingLine
+            closingLine = MKPolyline(coordinates: [locations.last!.coordinate, firstPoint], count: 2)
+            mapView.add(closingLine!)
         }
     }
 
@@ -133,14 +112,8 @@ extension ViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? MapPoint else { return nil }
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MapPoint.reuseIdentifier) ??
+        return mapView.dequeueReusableAnnotationView(withIdentifier: MapPoint.reuseIdentifier) ??
             AnnotationView(annotation: annotation)
-        
-//        let longPress = UILongPressGestureRecognizer.init(target: self, action: #selector(deleteAnnotationOnLongPress(gesture:annotationView:)))
-//        longPress.minimumPressDuration = 0.3
-//        longPress.delegate = self
-//        annotationView.addGestureRecognizer(longPress)
-        return annotationView
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
@@ -154,19 +127,3 @@ extension ViewController: MKMapViewDelegate {
     }
     
 }
-
-// MARK: Vertex Gesture Recognizer Delegate
-//extension ViewController: UIGestureRecognizerDelegate {
-
-//    func deleteAnnotationOnLongPress(gesture: UIGestureRecognizer, annotationView: MKAnnotationView) {
-//        for annotation in mapView.annotations {
-//            if let annotation = annotation as? MapPoint, annotationView.annotation as? MapPoint == annotation {
-//                self.annotations = self.annotations.filter{$0 != annotationView.annotation as? MapPoint}
-//                self.mapView.removeAnnotation(annotation)
-//            }
-//            updateOverlay()
-//            addPolyLine()
-//        }
-//    }
-//}
-
