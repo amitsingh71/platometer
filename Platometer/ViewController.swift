@@ -10,28 +10,33 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
-
+class ViewController: UIViewController {
     
-    @IBOutlet var mapView: MKMapView!
-    @IBOutlet var startSessionButton: UIButton!
-    @IBOutlet var areaLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var startStopButton: UIButton!
     
-    var locationManager = CLLocationManager()
-    // Array of annotations - modified when the points are changed.
-   // var annotations = [MapPoint]()
+    @IBOutlet weak var areaInSqM: UILabel!
+    @IBOutlet weak var areaInSqFt: UILabel!
+    @IBOutlet weak var accuracy: UILabel!
+    
+    fileprivate lazy var viewModel = ViewModel()
+    private isSessionInProgress = false
+    
+    private lazy var locationManager: CLLocationManager = {
+        let aManager = CLLocationManager()
+        aManager.delegate = self
+        aManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        return aManager
+    }()
+    
     // Current polygon displayed in the overlay.
     var polygon: MKPolygon?
     private(set) var makePolygon = MakePolygonModel()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        mapView.delegate = self
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
 
     var locationCordinates = [CLLocationCoordinate2D]()
@@ -50,9 +55,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         mapView.addAnnotations(annotations)
     }
 
-    private var isStarted:Bool = false
     
-    @IBAction func startSessionButtonTapped(_ sender: UIButton) {
+    @IBAction func startStopButtonTapped(_ sender: UIButton) {
         isStarted = isStarted ? false : true
         if isStarted {
             locationManager.startUpdatingLocation()
@@ -60,8 +64,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
         }
         DispatchQueue.main.async {
-            self.startSessionButton.setTitle(self.isStarted ? "END" : "START", for: .normal)
-            self.startSessionButton.tintColor = self.isStarted ? UIColor.blue : UIColor.red
+//            self.startSessionButton.setTitle(self.isStarted ? "END" : "START", for: .normal)
+//            self.startSessionButton.tintColor = self.isStarted ? UIColor.blue : UIColor.red
         }
     }
     
@@ -78,20 +82,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Remove this if you only want to draw lines between the points.
         var hull = makePolygon.sortConvex(input: coordinates)
         let polygon = MKPolygon(coordinates: &hull, count: hull.count)
-        areaLabel.text = "\(polygon.boundingMapRect.size.width * polygon.boundingMapRect.size.height) sq."
+        areaInSqM.text = "\(polygon.boundingMapRect.size.width * polygon.boundingMapRect.size.height) sq."
         //print(polygon.boundingMapRect)
         mapView.add(polygon)
         self.polygon = polygon
     }
+    
 }
 
-extension ViewController: MKMapViewDelegate, UIGestureRecognizerDelegate {
+// MARK: Location Manager Delegate
+extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        updateAccuracy(from: locations.last!)
         addLocations(locations)
         updateOverlay()
         addPolyLine()
     }
+    
+    private func updateAccuracy(from location: CLLocation) {
+        print("Accuracy: \(location.horizontalAccuracy)")
+        viewModel.accuracy = location.horizontalAccuracy
+        accuracy.text = viewModel.accuracyText
+    }
+}
+
+// MARK: Map View Delegate
+extension ViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard overlay is MKPolyline else { return MKOverlayRenderer(overlay: overlay) }
@@ -126,6 +143,11 @@ extension ViewController: MKMapViewDelegate, UIGestureRecognizerDelegate {
         }
     }
     
+}
+
+// MARK: Vertex Gesture Recognizer Delegate
+//extension ViewController: UIGestureRecognizerDelegate {
+
 //    func deleteAnnotationOnLongPress(gesture: UIGestureRecognizer, annotationView: MKAnnotationView) {
 //        for annotation in mapView.annotations {
 //            if let annotation = annotation as? MapPoint, annotationView.annotation as? MapPoint == annotation {
@@ -136,5 +158,5 @@ extension ViewController: MKMapViewDelegate, UIGestureRecognizerDelegate {
 //            addPolyLine()
 //        }
 //    }
-}
+//}
 

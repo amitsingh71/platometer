@@ -17,4 +17,5 @@ class MapPoint: NSObject, MKAnnotation {
         self.coordinate = coordinate
         super.init()
     }
+    
 }

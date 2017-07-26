@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DD121BC1F285F5B00C11B79 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD121BB1F285F5B00C11B79 /* ViewModel.swift */; };
 		9853AC121F1DFC5A005DC207 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853AC111F1DFC5A005DC207 /* AppDelegate.swift */; };
 		9853AC141F1DFC5A005DC207 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853AC131F1DFC5A005DC207 /* ViewController.swift */; };
 		9853AC171F1DFC5A005DC207 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9853AC151F1DFC5A005DC207 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6DD121BB1F285F5B00C11B79 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		9853AC0E1F1DFC5A005DC207 /* Platometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Platometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9853AC111F1DFC5A005DC207 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9853AC131F1DFC5A005DC207 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				9853AC111F1DFC5A005DC207 /* AppDelegate.swift */,
 				9853AC131F1DFC5A005DC207 /* ViewController.swift */,
+				6DD121BB1F285F5B00C11B79 /* ViewModel.swift */,
 				98A293A91F2328460004DCB9 /* MakePolygonModel.swift */,
 				98943AE21F1E354500506686 /* MapPoint.swift */,
 				9853AC151F1DFC5A005DC207 /* Main.storyboard */,
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DD121BC1F285F5B00C11B79 /* ViewModel.swift in Sources */,
 				98A293AA1F2328460004DCB9 /* MakePolygonModel.swift in Sources */,
 				9853AC141F1DFC5A005DC207 /* ViewController.swift in Sources */,
 				9853AC121F1DFC5A005DC207 /* AppDelegate.swift in Sources */,
