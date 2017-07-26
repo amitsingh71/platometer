@@ -13,7 +13,6 @@ import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
-    
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var startSessionButton: UIButton!
     @IBOutlet var areaLabel: UILabel!
