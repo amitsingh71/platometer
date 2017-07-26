@@ -20,7 +20,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var accuracy: UILabel!
     
     fileprivate lazy var viewModel = ViewModel()
-    private isSessionInProgress = false
+    fileprivate lazy var zoomInFirstOnceToken = false
+    fileprivate var lastRenderedCoordinate: CLLocationCoordinate2D?
+    fileprivate var closingLine: MKPolyline?
     
     private lazy var locationManager: CLLocationManager = {
         let aManager = CLLocationManager()
@@ -41,52 +43,27 @@ class ViewController: UIViewController {
 
     var locationCordinates = [CLLocationCoordinate2D]()
     
-    func addPolyLine() {
-        guard mapView.annotations.count > 0 else { return }
-        mapView.removeOverlays(mapView.overlays)
-        // Close path polyline
-        var coordinates = mapView.annotations.map { $0.coordinate }
-        coordinates.append(mapView.annotations.first!.coordinate)
-        mapView.add(MKPolyline(coordinates: coordinates, count: coordinates.count))
-    }
-    
-    func addLocations(_ locations: [CLLocation]) {
-        let annotations = locations.map { MapPoint(coordinate: $0.coordinate) }
-        mapView.addAnnotations(annotations)
-    }
-
-    
     @IBAction func startStopButtonTapped(_ sender: UIButton) {
-        isStarted = isStarted ? false : true
-        if isStarted {
-            locationManager.startUpdatingLocation()
-        } else {
-            locationManager.stopUpdatingLocation()
-        }
-        DispatchQueue.main.async {
-//            self.startSessionButton.setTitle(self.isStarted ? "END" : "START", for: .normal)
-//            self.startSessionButton.tintColor = self.isStarted ? UIColor.blue : UIColor.red
-        }
+        viewModel.isSessionInProgress = !viewModel.isSessionInProgress
+        startStopButton.setTitle(viewModel.startStopButtonTitle, for: .normal)
     }
     
-    func updateOverlay() {
-        // Remove existing overlay.
-        if let polygon = self.polygon { mapView.remove(polygon) }
-        self.polygon = nil
-        if mapView.annotations.count < 3 { print("Not enough coordinates")
-            return
-        }
-        // Create coordinates for new overlay.
-        let coordinates = mapView.annotations.map({ $0.coordinate })
-        // Sort the coordinates to create a path surrounding the points.
-        // Remove this if you only want to draw lines between the points.
-        var hull = makePolygon.sortConvex(input: coordinates)
-        let polygon = MKPolygon(coordinates: &hull, count: hull.count)
-        areaInSqM.text = "\(polygon.boundingMapRect.size.width * polygon.boundingMapRect.size.height) sq."
-        //print(polygon.boundingMapRect)
-        mapView.add(polygon)
-        self.polygon = polygon
-    }
+//    func updateOverlay() {
+//        // Remove existing overlay.
+//        if let polygon = self.polygon { mapView.remove(polygon) }
+//        self.polygon = nil
+//        if mapView.annotations.count < 3 { return }
+//        // Create coordinates for new overlay.
+//        let coordinates = mapView.annotations.map({ $0.coordinate })
+//        // Sort the coordinates to create a path surrounding the points.
+//        // Remove this if you only want to draw lines between the points.
+//        var hull = makePolygon.sortConvex(input: coordinates)
+//        let polygon = MKPolygon(coordinates: &hull, count: hull.count)
+//        areaInSqM.text = "\(polygon.boundingMapRect.size.width * polygon.boundingMapRect.size.height) sq."
+//        //print(polygon.boundingMapRect)
+//        mapView.add(polygon)
+//        self.polygon = polygon
+//    }
     
 }
 
@@ -95,16 +72,52 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         updateAccuracy(from: locations.last!)
-        addLocations(locations)
-        updateOverlay()
-        addPolyLine()
+        zoomInFirstTime(to: locations.last!)
+        let usefulLocations = updateLocations(locations)
+        //updateOverlay()
+        updatePolyline(from: usefulLocations)
     }
     
     private func updateAccuracy(from location: CLLocation) {
         print("Accuracy: \(location.horizontalAccuracy)")
-        viewModel.accuracy = location.horizontalAccuracy
+        viewModel.setAccuracy(location.horizontalAccuracy)
         accuracy.text = viewModel.accuracyText
     }
+    
+    private func zoomInFirstTime(to location: CLLocation) {
+        if zoomInFirstOnceToken { return }
+        zoomInFirstOnceToken = true
+        let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpanMake(0.001, 0.001))
+        mapView.setRegion(region, animated: true)
+    }
+    
+    private func updateLocations(_ locations: [CLLocation]) -> [CLLocation]? {
+        if !viewModel.isSessionInProgress { return nil }                        // Record points only if a session is on.
+        let aLocations = locations.filter { $0.horizontalAccuracy <= 200 }      // Ignore points that are not accurate
+        let annotations = aLocations.map { MapPoint(coordinate: $0.coordinate) }
+        mapView.addAnnotations(annotations)
+        return aLocations
+    }
+
+    func updatePolyline(from locations: [CLLocation]?) {
+        guard let locations = locations, locations.count > 0 else { return }
+        
+        var coordinatesForPolyline = [CLLocationCoordinate2D]()
+        if let lastCoordinate = lastRenderedCoordinate { coordinatesForPolyline.append(lastCoordinate) }
+        let newCoordinates = locations.map { $0.coordinate }
+        coordinatesForPolyline.append(contentsOf: newCoordinates)
+        let polyline = MKPolyline(coordinates: coordinatesForPolyline, count: coordinatesForPolyline.count)
+        mapView.add(polyline)
+        lastRenderedCoordinate = newCoordinates.last
+
+        if let firstPoint = mapView.annotations.first?.coordinate {
+            let aClosingLine = MKPolyline(coordinates: [locations.last!.coordinate, firstPoint], count: 2)
+            if let closingLine = self.closingLine { mapView.remove(closingLine) }
+            mapView.add(aClosingLine)
+            self.closingLine = aClosingLine
+        }
+    }
+
 }
 
 // MARK: Map View Delegate
@@ -120,11 +133,8 @@ extension ViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? MapPoint else { return nil }
-        let reuseIdentifier = "Reuse Identifier for location"
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) ??
-            MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        annotationView.image = UIImage(named: "annotation")
-        annotationView.isDraggable = true
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MapPoint.reuseIdentifier) ??
+            AnnotationView(annotation: annotation)
         
 //        let longPress = UILongPressGestureRecognizer.init(target: self, action: #selector(deleteAnnotationOnLongPress(gesture:annotationView:)))
 //        longPress.minimumPressDuration = 0.3
@@ -136,8 +146,8 @@ extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
         if newState == .ending || newState == .canceling {
             view.dragState = .none
-            updateOverlay()
-            addPolyLine()
+//            updateOverlay()
+//            updatePolyLine()
         } else if newState == .starting {
             view.dragState = .dragging
         }

@@ -11,6 +11,8 @@ import MapKit
 
 class MapPoint: NSObject, MKAnnotation {
     
+    static let reuseIdentifier = "Reuse Identifier for Map Point"
+    static let image = #imageLiteral(resourceName: "annotation")
     var coordinate: CLLocationCoordinate2D
     
     init(coordinate: CLLocationCoordinate2D) {
@@ -18,4 +20,22 @@ class MapPoint: NSObject, MKAnnotation {
         super.init()
     }
     
+}
+
+class AnnotationView: MKAnnotationView {
+    
+    convenience init(annotation: MKAnnotation) {
+        self.init(annotation: annotation, reuseIdentifier: MapPoint.reuseIdentifier)
+        image = MapPoint.image
+        isDraggable = true
+    }
+    
+    private override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
 }

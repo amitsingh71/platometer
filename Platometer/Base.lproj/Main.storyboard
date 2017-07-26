@@ -43,7 +43,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="startSessionButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gg5-mK-T7F"/>
+                                    <action selector="startStopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cfg-Af-FgA"/>
                                 </connections>
                             </button>
                             <view alpha="0.45000000000000001" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdx-vp-Cur">
@@ -112,24 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="3pg-B3-6rG">
-            <objects>
-                <viewController id="Kst-d8-m5a" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GYM-BV-l5g"/>
-                        <viewControllerLayoutGuide type="bottom" id="DZx-av-MPw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5YU-bU-88L">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t0y-IZ-qup" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="150" y="49"/>
         </scene>
     </scenes>
 </document>
