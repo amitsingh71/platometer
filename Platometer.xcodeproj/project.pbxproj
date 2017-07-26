@@ -14,6 +14,7 @@
 		9853AC1C1F1DFC5A005DC207 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9853AC1A1F1DFC5A005DC207 /* LaunchScreen.storyboard */; };
 		98943AE31F1E354500506686 /* MapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98943AE21F1E354500506686 /* MapPoint.swift */; };
 		98A293AA1F2328460004DCB9 /* MakePolygonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A293A91F2328460004DCB9 /* MakePolygonModel.swift */; };
+		B516CBEC1F285D0B009ED72D /* HWPlatometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B516CBEB1F285D0B009ED72D /* HWPlatometer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9853AC1D1F1DFC5A005DC207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98943AE21F1E354500506686 /* MapPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPoint.swift; sourceTree = "<group>"; };
 		98A293A91F2328460004DCB9 /* MakePolygonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakePolygonModel.swift; sourceTree = "<group>"; };
+		B516CBEB1F285D0B009ED72D /* HWPlatometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HWPlatometer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				9853AC181F1DFC5A005DC207 /* Assets.xcassets */,
 				9853AC1A1F1DFC5A005DC207 /* LaunchScreen.storyboard */,
 				9853AC1D1F1DFC5A005DC207 /* Info.plist */,
+				B516CBEB1F285D0B009ED72D /* HWPlatometer.swift */,
 			);
 			path = Platometer;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				98A293AA1F2328460004DCB9 /* MakePolygonModel.swift in Sources */,
 				9853AC141F1DFC5A005DC207 /* ViewController.swift in Sources */,
 				9853AC121F1DFC5A005DC207 /* AppDelegate.swift in Sources */,
+				B516CBEC1F285D0B009ED72D /* HWPlatometer.swift in Sources */,
 				98943AE31F1E354500506686 /* MapPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
